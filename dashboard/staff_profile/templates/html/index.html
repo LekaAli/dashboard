@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Landing Page</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" type="text/css">
+    <!--<script src="{% static 'bootstrap/jquery.js' %}"></script>-->
+</head>
+<body>
+    <table>
+        <tr>
+            <td id="left_pane">
+                <ul>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </td>
+            <td id="right_pane">
+                <table>
+                    <tr id="search">
+                        <td colspan="3">
+                            <input type="search" name="search_employee">
+                            <input type="button" name="search_btn" value="search">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="e_stats" colspan="3">
+                            ABC
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="o_stats">
+                            1
+                        </td>
+                        <td  class="o_stats">
+                            2
+                        </td>
+                        <td  class="o_stats" >
+                            3
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <!--<div style="background-color:gray;border-radius:5px 0px 0px 5px">-->
+        <!--Left Pane-->
+    <!--</div>-->
+    <!--<div style="background-color:lime;border-radius:0px 5px 5px 0px">-->
+        <!--<div style="background-color:red">No Of Employees</div>-->
+        <!--<div style="background-color:green">Monthly Birthdays</div>-->
+        <!--<div style="background-color:gray">Position</div>-->
+        <!--<div style="background-color:blue">Review</div>-->
+    <!--</div>-->
+
+</body>
+</html>
