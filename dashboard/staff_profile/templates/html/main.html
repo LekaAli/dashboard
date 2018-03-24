@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Landing Page</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" type="text/css">
+    <script src="{% static 'js/index.js' %}"></script>
+</head>
+<body>
+<table>
+    <tr>
+        <td id="left_pane">
+            <select>
+                <option value="stats">View Statistics</option>
+                <option value="profile">View My Profile</option>
+                <option value="employees">View All Employees</option>
+            </select>
+        </td>
+        <td id="right_pane">
+            <table>
+                <tr id="search">
+                    <td colspan="3">
+                        <input type="search" name="search_employee" placeholder="search employee">
+                        <input type="button" name="search_btn" value="search">
+                        <a href="{% url 'index' %}" style="float: right;margin-right:15px">Logout</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="e_stats" colspan="3">
+                        <ul>
+                            <li><label><b>Employees Count:</b></label></li>
+                            <li>5</li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="o_stats">
+                        <ul>
+                            <li><label><b>January Birthdays:</b></label></li>
+                            <li>5</li>
+                        </ul>
+                    </td>
+                    <td  class="o_stats">
+                         <ul>
+                            <li><label><b>Position Count:</b></label></li>
+                            <li>
+                                profession: count
+                            </li>
+                        </ul>
+                    </td>
+                    <td  class="o_stats" >
+                         <ul>
+                             <li><label><b>Gender Count:</b></label></li>
+                            <li>
+                                <ul>
+                                    <li>M: 5</li>
+                                    <li>F: 5</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

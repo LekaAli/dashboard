@@ -31,3 +31,15 @@ table {
     border-radius: 5px;
     text-align: center;
 }
+
+select {
+    margin-left: 25px;
+}
+
+ul {
+
+}
+
+body {
+    text-align: center;
+}
