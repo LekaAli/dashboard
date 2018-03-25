@@ -24,17 +24,21 @@ def login(request):
         return render(request, 'html/index.html')
 
 
-def get_user_profile(request):
-    pass
+def get_user_profile(request, token):
+    user_profile = services.get_user_profile(token)
+    return render(request, '', context={})
 
 
-def get_logged_in_user(request):
-    pass
+def get_logged_in_user(request, token):
+    user = services.get_logged_in_user(token)
+    return render(request, '', context={})
 
 
 def get_employees(request):
-    pass
+    employees = services.get_employees()
+    return render(request, '', context= {})
 
 
 def get_employee_stats(request):
-    pass
+    employees = services.get_employees()
+    return render(request, '', context={})
