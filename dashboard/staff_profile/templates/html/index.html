@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Landing Page</title>
     {% load staticfiles %}
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <!--<link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}" type="text/css">-->
+
     <link rel="stylesheet" href="{% static 'css/index.css' %}" type="text/css">
     <script src="{% static 'js/index.js' %}"></script>
 </head>
 <body>
-    <form method="post" action="{% url 'login' %}">
+    <form method="post" action="{% url 'staff-profile:main' %}">
         {% csrf_token %}
         {% if 'F' == success %}
             <label style="color: red"><b>Message:</b> {{ message }}</label><br><br>

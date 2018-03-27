@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Landing Page</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}" type="text/css">
+    <script src="{% static 'js/jquery-ui.min.js' %}" type="text/javascript"></script>
+
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" type="text/css">
+    <script src="{% static 'js/index.js' %}" type="text/javascript"></script>
+</head>
+<body>
+<table>
+    <tr>
+        <td id="right_pane">
+            <table>
+                <tr id="search">
+                    <td colspan="3">
+                        <h3>Employee Profile</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td id="e_stats" colspan="3">
+                        <ul>
+                            <li>
+                                <h5 id="emp_title">{{ user.first_name }} {{ user.last_name }}</h5>
+                                <div id="emp_info">
+                                    <h5>Personal Information</h5>
+                                    <label>Id Number: {{ employee.id_number }}</label><br>
+                                    <label>Birth Date: {{ employee.birth_date }}</label><br>
+                                    <label>Age: {{ employee.age }}</label><br>
+                                    <label>Gender: {{ employee.gender }}</label><br>
+                                    <label>Race: {{ employee.race }}</label><br>
+                                    <label>Phone number: {{ employee.phone_number }}</label><br>
+                                    <label>Email: {{ employee.email }}</label><br>
+
+                                    <h5>Next of Kin</h5>
+                                    {% for relative in next_of_kin %}
+                                        <label>Name: {{ relative.name }}</label><br>
+                                        <label>Relationship: {{ relative.relationship }}</label><br>
+                                        <label>Phone Number: {{ relative.phone_number }}</label><br>
+                                        <label>Email: {{ relative.email }}</label><br>
+                                    {% endfor %}
+
+                                    <h5>Job Information</h5>
+                                    <label>Position: {{ position.name }}</label><br>
+                                    <label>Level: {{ position.level }}</label><br>
+                                    <label>Years Worked: {{ employee.years_worked }}</label><br>
+
+                                    <h5>Reviews</h5>
+                                    {% for review in reviews %}
+                                        {% if review.type == 'P' %}
+                                        <label>Type: Performance Increase</label><br>
+                                        {% elif review.type == 'S' %}
+                                        <label>Type: Starting Salary</label><br>
+                                        {% elif review.type == 'A' %}
+                                        <label>Type: Annual Increase</label><br>
+                                        {% else %}
+                                        <label>Type: Expectation Review</label><br>
+                                        {% endif %}
+                                        <label>Date: {{ review.date }}</label><br>
+                                        <label>Salary: {{ review.salary }}</label><br><br>
+                                    {% endfor %}
+
+                                </div>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr id="back">
+                    <td colspan="3">
+                        <a href="{% url 'staff-profile:main' %}" >Main</a>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

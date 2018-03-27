@@ -11,27 +11,27 @@ def login_user(username, password):
 
 def get_logged_in_user(token):
     url = 'http://staging.tangent.tngnt.co/api/user/me/'
-    token = ' '.join(['token', token])
-    header = {'Authorization': token}
-    response = requests.get(url, headers=header)
+    response = requests.get(url, headers=prep_header(token))
     logged_in_user = response.json()
     return logged_in_user
 
 
 def get_user_profile(token):
     url = 'http://staging.tangent.tngnt.co/api/employee/me/'
-    token = ' '.join(['token', token])
-    header = {'Authorization': token}
-    response = requests.get(url, headers=header)
+    response = requests.get(url, headers=prep_header(token))
     user_profile = response.json()
     return user_profile
 
 
 def get_employees(token):
     url = 'http://staging.tangent.tngnt.co/api/employee/'
-    token = ' '.join(['token', token])
-    header = {'Authorization': token}
-    response = requests.get(url, headers=header)
+
+    response = requests.get(url, headers=prep_header(token))
     employees_info = response.json()
     return employees_info
 
+
+def prep_header(token):
+    token = ' '.join(['token', token])
+    header = {'Authorization': token}
+    return header

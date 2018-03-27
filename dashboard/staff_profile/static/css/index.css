@@ -1,12 +1,39 @@
 table {
     width: 100%;
+    margin:0px;
     height: 100%;
 }
 
 #left_pane {
      background-color: gray;
-     border-radius: 5px 0px 0px 5px;
+     border-radius: 5px 5px 5px 5px;
      width: 20%;
+}
+
+#left_pane ul
+{
+    width:100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+#left_pane ul li
+{
+
+    overflow:hidden;
+    width:auto;
+    padding:5px;
+    margin:5px;
+    color: white;
+    font-weight: bold;
+}
+
+#left_pane ul li a
+{
+    background-color: red;
+    padding:5px;
+    border-radius:5px;
 }
 
 #right_pane {
@@ -15,9 +42,42 @@ table {
      width: 70%";
 }
 
-#search {
+#search, #back {
     text-align: center;
 }
+
+#back td a {
+    background-color: red;
+    padding:5px;
+    margin:10px;
+    border-radius:5px;
+}
+
+#emp_title {
+    background-color: gray;
+    padding:10px;
+    border-radius:5px 5px 0px 0px;
+    text-align: center;
+    margin: 5px 600px 0px 600px;
+}
+
+#emp_info
+{
+    background-color: lightgray;
+    margin: 0px 600px 0px 600px;
+    padding: 10px 0px 10px 0px;
+    border-radius: 0px 0px 5px 5px;
+    height:100%;
+    overflow:  visible | hidden | scroll | auto | inherit;
+}
+#all_stats {
+    background-color: white;
+    border-radius: 5px;
+    margin-left: 20px;
+    margin-right: 20px;
+    text-align: center;
+}
+
 #e_stats {
     background-color: white;
     border-radius: 5px;
