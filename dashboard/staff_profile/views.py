@@ -1,9 +1,18 @@
+import token
+
 from django.shortcuts import render, redirect
 from . import services
 
 
 def index(request):
-    return render(request, 'html/index.html')
+    if request.method == 'GET':
+        return render(request, 'html/index.html')
+
+
+def filter_employees(request, token):
+    if request.method == 'GET':
+        print token
+        return render(request, 'html/filtering.html', context={'token': token})
 
 
 def main(request):
@@ -50,9 +59,26 @@ def get_logged_in_user(request, token):
     return render(request, 'html/main.html')
 
 
-def get_employees(request, token):
-    if request.method == 'GET':
-        employees = services.get_employees(token)
+def prepare_filter_query(filter_data):
+    filter_query = ''
+    for filter_key in filter_data:
+        if filter_key not in ['csrfmiddlewaretoken', 'token']:
+            if filter_data.get(filter_key) not in ['', None]:
+                if filter_key in ['email']:
+                    filter_query += '%s__contains=%s&' % (filter_key, filter_data.get(filter_key))
+                else:
+                    filter_query += '%s=%s&' % (filter_key, filter_data.get(filter_key))
+
+    return filter_query
+
+
+def get_employees(request):
+    if request.method == 'POST':
+        employee_filtering_data = request.POST
+        print employee_filtering_data
+        token = employee_filtering_data.get('token')
+        filter_query = prepare_filter_query(employee_filtering_data)
+        employees = services.filter_employees(token, filter_query)
         employee_info_list = []
         for employee in employees:
             employee_data = {}
@@ -77,6 +103,20 @@ def get_employees(request, token):
 
 def get_employee_stats(request, token):
     if request.method == 'GET':
+        stats = {}
         employees = services.get_employees(token)
-        print employees
-        return render(request, 'html/statistics.html', context={'stats': None})
+        stats['no_of_employees'] = len(employees)
+        stats['frontend'] = len(
+                [ employee for employee in employees if employee.get('position')['name'] in ['Front-end Developer']])
+        stats['backend'] = len(
+                [ employee for employee in employees if employee.get('position')['name'] in ['Back-end Developer']])
+        stats['projectmanager'] = len(
+                [employee for employee in employees if employee.get('position')['name'] in ['Project Manager']])
+        stats['gender_male'] = len([employee for employee in employees if employee.get('gender') in ['M']])
+        stats['gender_female'] = len([employee for employee in employees if employee.get('gender') in ['F']])
+        stats['race_B'] = len([employee for employee in employees if employee.get('race') in ['B']])
+        stats['race_C'] = len([employee for employee in employees if employee.get('race') in ['C']])
+        stats['race_I'] = len([employee for employee in employees if employee.get('race') in ['I']])
+        stats['race_W'] = len([employee for employee in employees if employee.get('race') in ['W']])
+        stats['race_N'] = len([employee for employee in employees if employee.get('race') in ['N']])
+        return render(request, 'html/statistics.html', context=stats)

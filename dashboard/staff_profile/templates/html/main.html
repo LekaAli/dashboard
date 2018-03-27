@@ -13,6 +13,11 @@
 </head>
 <body>
 <table>
+    <tr id="search">
+        <td>
+            <a href="{% url 'staff-profile:index' %}" style="float: right;margin-right:15px"><b>Logout</b></a>
+        </td>
+    </tr>
     <tr>
         <td id="left_pane">
             <ul>
@@ -23,7 +28,7 @@
                     <a href="{% url 'staff-profile:profile' token %}" >View My Profile</a>
                 </li>
                 <li>
-                    <a href="{% url 'staff-profile:employees' token %}" >View All Employees</a>
+                    <a href="{% url 'staff-profile:filtering' token %}" >View All Employees</a>
                 </li>
             </ul>
         </td>

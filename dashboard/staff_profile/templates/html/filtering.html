@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Landing Page</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}" type="text/css">
+    <script src="{% static 'js/jquery-ui.min.js' %}" type="text/javascript"></script>
+
+    <link rel="stylesheet" href="{% static 'css/index.css' %}" type="text/css">
+    <script src="{% static 'js/index.js' %}" type="text/javascript"></script>
+</head>
+<body>
+<table>
+    <tr>
+        <td id="right_pane">
+            <form method="post" action="{% url 'staff-profile:employees' %}" >
+                {% csrf_token %}
+                <select name="gender">
+                    <option disabled selected>--Filter by Gender--</option>
+                    <option value="F">Female Employees</option>
+                    <option value="M">Male Employees</option>
+                </select><br>
+
+                <select name="position">
+                    <option disabled selected>--Filter by Position--</option>
+                    <option value="2">Back-End Developer</option>
+                    <option value="1">Front-End Developer</option>
+                    <option value="3">Project Manager</option>
+                </select><br>
+
+                <select name="race">
+                    <option disabled selected>--Filter by Race--</option>
+                    <option value="B">Black African</option>
+                    <option value="C">Coloured</option>
+                    <option value="I">Indian/Asian</option>
+                    <option value="W">White</option>
+                    <option value="N">None Dominant</option>
+                </select><br>
+                <input type="date" name="start_date" placeholder="Start date"><br>
+                <input type="date" name="birth_date" placeholder="Birth date"><br>
+                <input type="text" name="user" placeholder="User Id"><br>
+                <input type="text" name="email" placeholder="email address"><br>
+                <input type="hidden" name="token" value="{{ token }}">
+                <input type="submit" value="Filter Employees">
+            </form>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

@@ -31,6 +31,17 @@ def get_employees(token):
     return employees_info
 
 
+def filter_employees(token, filter_data):
+    if filter_data not in ['', None]:
+        url = 'http://staging.tangent.tngnt.co/api/employee/?%s' % filter_data
+    else:
+        url = 'http://staging.tangent.tngnt.co/api/employee/'
+
+    response = requests.get(url, headers=prep_header(token))
+    employees_info = response.json()
+    return employees_info
+
+
 def prep_header(token):
     token = ' '.join(['token', token])
     header = {'Authorization': token}

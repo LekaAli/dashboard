@@ -18,15 +18,12 @@
             <table>
                 <tr id="search">
                     <td colspan="3">
-                        <input type="search" name="search_employee" placeholder="search employee">
-                        <input type="button" name="search_btn" value="search">
-                        <a href="{% url 'staff-profile:index' %}" style="float: right;margin-right:15px">Logout</a>
+                        <h3>List Of Employees</h3>
                     </td>
                 </tr>
                 <tr>
                     <td id="e_stats" colspan="3">
                         <ul>
-                            <li><label><b>Employees</b></label></li>
                             {% for employee in all_employees %}
                             <li>
                                 <h5 id="emp_title">{{ employee.first_name }} {{ employee.last_name }}</h5>

@@ -18,56 +18,32 @@
             <table>
                 <tr id="search">
                     <td colspan="3">
-                        <input type="search" name="search_employee" placeholder="search employee">
-                        <input type="button" name="search_btn" value="search">
-                        <a href="{% url 'staff-profile:index' %}" style="float: right;margin-right:15px">Logout</a>
+                        <h3>Employees Stats</h3>
                     </td>
                 </tr>
-
-                <!--<tr>-->
-                    <!--<td id="all_stats" colspan="3">-->
-                        <!--<ul>-->
-                            <!--&lt;!&ndash;{% for i in employees %}&ndash;&gt;-->
-                            <!--&lt;!&ndash;{{ all_employees }}&ndash;&gt;-->
-                            <!--<li>-->
-                                <!--<h5><b>&lt;!&ndash;first_name last_name&ndash;&gt;</b></h5>-->
-                                <!--&lt;!&ndash;Gender:&ndash;&gt;-->
-                                <!--&lt;!&ndash;Age&ndash;&gt;-->
-                                <!--&lt;!&ndash;Race&ndash;&gt;-->
-                                <!--&lt;!&ndash;Position name&ndash;&gt;-->
-                                <!--&lt;!&ndash;Level&ndash;&gt;-->
-                                <!--&lt;!&ndash;years_worked&ndash;&gt;-->
-                                <!--&lt;!&ndash;birth date&ndash;&gt;-->
-                                <!--&lt;!&ndash;days to birthday&ndash;&gt;-->
-                                <!--&lt;!&ndash;email&ndash;&gt;-->
-                                <!--&lt;!&ndash;phone_number&ndash;&gt;-->
-                            <!--</li>-->
-                            <!--&lt;!&ndash;{% endfor %}&ndash;&gt;-->
-                        <!--</ul>-->
-                    <!--</td>-->
-                <!--</tr>-->
-
                 <tr>
                     <td id="e_stats" colspan="3">
                         <ul>
-                            <li><label><b>Employees Count:</b></label></li>
-                            <li>5</li>
+                            <li><label><b></b></label></li>
+                            <li>
+                                Number of Employees: {{ no_of_employees }}
+                            </li>
                         </ul>
                     </td>
                 </tr>
 
                 <tr>
-                    <td class="o_stats">
-                        <ul>
-                            <li><label><b>January Birthdays:</b></label></li>
-                            <li>5</li>
-                        </ul>
-                    </td>
                     <td  class="o_stats">
                          <ul>
                             <li><label><b>Position Count:</b></label></li>
                             <li>
-                                profession: count
+                                Back-End Developer: {{ backend }}
+                            </li>
+                            <li>
+                                Front-End Developer: {{ frontend }}
+                            </li>
+                             <li>
+                                Project Manager: {{ projectmanager }}
                             </li>
                         </ul>
                     </td>
@@ -76,8 +52,22 @@
                              <li><label><b>Gender Count:</b></label></li>
                             <li>
                                 <ul>
-                                    <li>M: 5</li>
-                                    <li>F: 5</li>
+                                    <li>Male: {{ gender_male }}</li>
+                                    <li>Female: {{ gender_female }}</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </td>
+                    <td  class="r_stats" >
+                         <ul>
+                             <li><label><b>Race Count:</b></label></li>
+                            <li>
+                                <ul>
+                                    <li>Black African: {{ race_B }}</li>
+                                    <li>White: {{ race_W }}</li>
+                                    <li>Coloured: {{ race_C }}</li>
+                                    <li>Indian/Asian: {{ race_I }}</li>
+                                    <li>None Dominant: {{ race_N }}</li>
                                 </ul>
                             </li>
                         </ul>
