@@ -9,7 +9,7 @@ class EmployeeTesCases(TestCase):
         login_credentials = {'username': 'pravin.gordhan', 'password': 'pravin.gordhan'}
         login_results = login_user(**login_credentials)
         self.assertIn('token', login_results)
-        self.assertTrue(login_results.get('token' != ''))
+        self.assertTrue(login_results.get('token') != '')
 
     def test_get_user_profile(self):
         token = '2a3d1af2f3f6d1cddaa3012c1c465fcbdffa3678'
@@ -57,9 +57,9 @@ class EmployeeTesCases(TestCase):
             u'birth_date',
             u'position',
             u'email']
-        self.assertTrue(type(employees) == 'list')
+        self.assertTrue(type(employees) == type(employee_info))
         for employee in employees:
-            self.assertTrue(type(employee) == 'dict')
+            self.assertTrue(type(employee) == type({}))
             self.assertListEqual(employee_info, employee.keys())
-            
+
 
