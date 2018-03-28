@@ -5,30 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Landing Page</title>
     {% load staticfiles %}
-    <link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}" type="text/css">
-    <script src="{% static 'js/jquery-ui.min.js' %}" type="text/javascript"></script>
-
     <link rel="stylesheet" href="{% static 'css/index.css' %}" type="text/css">
     <script src="{% static 'js/index.js' %}" type="text/javascript"></script>
 </head>
 <body>
 <table>
     <tr>
-        <td id="right_pane">
+        <td id="filtering_pane">
+            <div id="filter_header"><b>Filter Employees</b></div>
             <form method="post" action="{% url 'staff-profile:employees' %}" >
                 {% csrf_token %}
                 <select name="gender">
                     <option disabled selected>--Filter by Gender--</option>
                     <option value="F">Female Employees</option>
                     <option value="M">Male Employees</option>
-                </select><br>
+                </select>
 
                 <select name="position">
-                    <option disabled selected>--Filter by Position--</option>
-                    <option value="2">Back-End Developer</option>
-                    <option value="1">Front-End Developer</option>
-                    <option value="3">Project Manager</option>
-                </select><br>
+                <option disabled selected>--Filter by Position--</option>
+                <option value="2">Back-End Developer</option>
+                <option value="1">Front-End Developer</option>
+                <option value="3">Project Manager</option>
+                </select>
 
                 <select name="race">
                     <option disabled selected>--Filter by Race--</option>
@@ -38,7 +36,9 @@
                     <option value="W">White</option>
                     <option value="N">None Dominant</option>
                 </select><br>
+                <label>Start Date:</label><br>
                 <input type="date" name="start_date" placeholder="Start date"><br>
+                <label>Birth Date:</label><br>
                 <input type="date" name="birth_date" placeholder="Birth date"><br>
                 <input type="text" name="user" placeholder="User Id"><br>
                 <input type="text" name="email" placeholder="email address"><br>

@@ -11,7 +11,6 @@ def index(request):
 
 def filter_employees(request, token):
     if request.method == 'GET':
-        print token
         return render(request, 'html/filtering.html', context={'token': token})
 
 
@@ -24,10 +23,10 @@ def main(request):
             if 'token' in response:
                 return render(request, 'html/main.html', response)
             msg = {'success': 'F', 'message': response.get('non_field_errors')[0]}
-            return render(request, 'html/index.html', msg)
+            return render(request, 'html/index.html', context=msg)
         else:
             msg = {'success': 'F', 'message': 'Username and Password are required'}
-            return render(request, 'html/index.html', msg)
+            return render(request, 'html/index.html', context=msg)
     else:
         return render(request, 'html/index.html')
 
@@ -39,7 +38,6 @@ def get_user_profile(request, token):
         review = user_profile['employee_review']
         user = user_profile.get('user')
         position = user_profile.get('position')
-        print review
         employee = {}
         for key in user_profile:
             if key not in ['employee_next_of_kin', 'employee_review', 'user', 'position']:
@@ -75,7 +73,6 @@ def prepare_filter_query(filter_data):
 def get_employees(request):
     if request.method == 'POST':
         employee_filtering_data = request.POST
-        print employee_filtering_data
         token = employee_filtering_data.get('token')
         filter_query = prepare_filter_query(employee_filtering_data)
         employees = services.filter_employees(token, filter_query)
@@ -105,6 +102,7 @@ def get_employee_stats(request, token):
     if request.method == 'GET':
         stats = {}
         employees = services.get_employees(token)
+        print employees[0].keys()
         stats['no_of_employees'] = len(employees)
         stats['frontend'] = len(
                 [ employee for employee in employees if employee.get('position')['name'] in ['Front-end Developer']])

@@ -9,14 +9,17 @@
     <script src="{% static 'js/index.js' %}"></script>
 </head>
 <body>
-    <form method="post" action="{% url 'staff-profile:main' %}">
-        {% csrf_token %}
-        {% if 'F' == success %}
-            <label style="color: red"><b>Message:</b> {{ message }}</label><br><br>
-        {% endif %}
-        <input type="text" name="username" placeholder="Username"><br>
-        <input type="password" name="password" placeholder="Password"><br>
-        <input type="submit" value="Login">
-    </form>
+    <div id="login_page">
+        <div id="login_header"><b>Login</b></div>
+        <form method="post" action="{% url 'staff-profile:main' %}">
+            {% csrf_token %}
+            {% if 'F' == success %}
+                <label style="color: red"><b>Message:</b> {{ message }}</label><br><br>
+            {% endif %}
+            <input type="text" name="username" placeholder="Username"><br>
+            <input type="password" name="password" placeholder="Password"><br>
+            <input type="submit" value="Login">
+        </form>
+    </div>
 </body>
 </html>

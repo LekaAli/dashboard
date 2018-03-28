@@ -9,13 +9,6 @@ def login_user(username, password):
     return data
 
 
-def get_logged_in_user(token):
-    url = 'http://staging.tangent.tngnt.co/api/user/me/'
-    response = requests.get(url, headers=prep_header(token))
-    logged_in_user = response.json()
-    return logged_in_user
-
-
 def get_user_profile(token):
     url = 'http://staging.tangent.tngnt.co/api/employee/me/'
     response = requests.get(url, headers=prep_header(token))
@@ -25,7 +18,6 @@ def get_user_profile(token):
 
 def get_employees(token):
     url = 'http://staging.tangent.tngnt.co/api/employee/'
-
     response = requests.get(url, headers=prep_header(token))
     employees_info = response.json()
     return employees_info
@@ -36,7 +28,6 @@ def filter_employees(token, filter_data):
         url = 'http://staging.tangent.tngnt.co/api/employee/?%s' % filter_data
     else:
         url = 'http://staging.tangent.tngnt.co/api/employee/'
-
     response = requests.get(url, headers=prep_header(token))
     employees_info = response.json()
     return employees_info
